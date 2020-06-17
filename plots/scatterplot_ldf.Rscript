@@ -1,0 +1,23 @@
+library(ggplot2)
+
+scatterplot_ldf <- function(filename, xymax=.5, logscore=FALSE) {
+    ldf <- read.csv(filename, header=TRUE)
+    n <- nrow(ldf)
+    pairwise <- data.frame(fs = ldf[seq(1,n,2), 2], our = ldf[seq(2,n,2), 2], score=ldf[seq(2,n,2), 4])
+    pairwise[is.na(pairwise)] <- NA
+    if (logscore) pairwise$score <- as.factor(floor(log(pairwise$score)))
+    else pairwise$score <- as.factor(floor(pairwise$score * 10))
+    # Take the diagonal, color it grey.
+    pairwise[which(pairwise$fs == pairwise$our), 3] <- NA
+    
+    print(pairwise[1:10,])
+    print(ggplot(pairwise, aes(fs, our,  color=score)) + coord_cartesian(ylim=c(0,2),xlim=c(0,2)) + geom_point() + xlab(toString(ldf[1,1])) + ylab(toString(ldf[2,1]))) 
+     
+    #geom_point(colour = "red", shape = 1) 
+    if (!dev.interactive()) dev.off()
+}
+
+args = commandArgs(trailingOnly=TRUE)
+if (length(args) >= 1) {
+    do.call(scatterplot_ldf, as.list(args))
+}

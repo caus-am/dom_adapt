@@ -1,0 +1,25 @@
+library(ggplot2)
+
+boxplot_ldf <- function(filename, ymax=1.5) {
+    ymax <- as.numeric(ymax)
+    ldf <- read.csv(filename, header=TRUE)
+    
+    # Throw away examples in which our method says NA (make the element before - fs - also NA)
+    ldf[which(is.na(ldf[, 2])) - 1, c(2:4)] <- NA
+    
+    # Automatic ymax
+    if (ymax < 0) {
+        print(ggplot(ldf, aes(algorithm, sqrt(loss))) + geom_boxplot(aes(algorithm, sqrt(loss)), outlier.colour = "red", outlier.shape = 1) + xlab("Method") + ylab("L2 loss"))
+    } else {
+        print(ggplot(ldf, aes(algorithm, sqrt(loss))) + geom_boxplot(aes(algorithm, sqrt(loss)), outlier.colour = "red", outlier.shape = 1) + xlab("Method") + ylab("L2 loss") + coord_cartesian(ylim = c(0, ymax)))
+    }
+
+    #ggplot(ldf_2_4, aes(x=sqrt(loss), y=..density.., color=algorithm, fill=algorithm)) + geom_freqpoly(alpha=0.5) # some options from geom_histogram
+    
+    if (!dev.interactive()) dev.off()
+}
+
+args = commandArgs(trailingOnly=TRUE)
+if (length(args) >= 1) {
+    do.call(boxplot_ldf, as.list(args))
+}
