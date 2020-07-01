@@ -21,10 +21,15 @@ to see whether your clingo installation is working.
 ```
 source('http://bioconductor.org/biocLite.R')
 biocLite(c('graph','RBGL','gmp','RcppArmadillo'))
-install.packages(c('deal','pcalg','combinat','hash','bnlearn','foreach','doMC','caTools','expm'))
+install.packages(c('deal','combinat','hash','bnlearn','foreach','doMC','caTools','expm'))
+```
+Installing 'pcalg' may require you to install also a few other packages (e.g. robustbase, ggm):
+```
+install.packages(c('pcalg')
 ```
 
 3. Start R in the R/ directory and run:
 ```
 source('load.R')
+loud()
 ```
