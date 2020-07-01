@@ -5,8 +5,9 @@ Code for the NIPS 2018 paper "Domain Adaptation by Using Causal Inference to Pre
 
 # Installation instructions:
 
-1. Check installation for the existence of ./ASP/clingo
-If it’s not there download the new clingo (http://sourceforge.net/projects/potassco/files/clingo) from the website and rename it to that file.
+The code expects a Clingo solver in the folder ASP (point 1) and a few R packages (point 2):
+
+1. Download the new clingo (http://sourceforge.net/projects/potassco/files/clingo) from the website and rename it as "clingo"
  
 You can try running:
 ```
@@ -15,7 +16,7 @@ You can try running:
 to see whether your clingo installation is working.
 
 
-2. Install R packages:
+2. Install the R packages:
 
 ```
 source('http://bioconductor.org/biocLite.R')
