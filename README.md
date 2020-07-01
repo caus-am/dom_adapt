@@ -23,3 +23,8 @@ source('http://bioconductor.org/biocLite.R')
 biocLite(c('graph','RBGL','gmp','RcppArmadillo'))
 install.packages(c('deal','pcalg','combinat','hash','bnlearn','foreach','doMC','caTools','expm'))
 ```
+
+3. Start R in the R/ directory and run:
+```
+source('load.R')
+```
