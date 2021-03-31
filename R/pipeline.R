@@ -110,6 +110,7 @@ pipeline<-function(n=4, topology="random", # model properties
   }
   
   # Try to learn a model.
+  evalDirectCauses = TRUE
   L <- learn(testConfig, solverConfig, currentDir = currentFolder, graph_filename_template=graph_filename_template, indPath=indPath, 
              background_knowledge_file=background_knowledge_file, tested_independences=tested_independences, MD=MD,
              evalDirectCauses=evalDirectCauses, verbose=verbose)

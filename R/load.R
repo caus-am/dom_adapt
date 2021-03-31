@@ -38,8 +38,8 @@ loud<-function(nproc = 1) { # if -1 it tries to set to all of the available core
   sourceDir('./solvers/',trace=FALSE)
   sourceDir('./tests/',trace=FALSE)
   sourceDir('./utils/',trace=FALSE)
-  source('../../simulator/simul_interventions_NIPS.R')
-  source('../../simulator/simulateData_NIPS.R')
+  source('../simulator/simul_interventions_NIPS.R')
+  source('../simulator/simulateData_NIPS.R')
 }
 
 
